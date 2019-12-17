@@ -1,5 +1,5 @@
-local username = "root"
-local passsword = "Kilo25070View03653"
+local username = ""
+local passsword = ""
 
 local server = require "resty.websocket.server"
 
@@ -13,7 +13,7 @@ if not wsocket then
     return ngx.exit(444)
 end
 
-local webtelnet = dofile ("lualib/webtelnet.lua")
+local webtelnet = dofile ("webtelnet.lua")
 --NOTE: 不会根据package.path进行搜索，而是根据相对路径搜索，而此处的应该是相对openresty的解释器的相对路径(openresty根目录)
 webtelnet.connect()
 while true do
