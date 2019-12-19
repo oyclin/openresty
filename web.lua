@@ -17,7 +17,7 @@ local webtelnet = dofile ("webtelnet.lua")
 --NOTE: 不会根据package.path进行搜索，而是根据相对路径搜索，而此处的应该是相对openresty的解释器的相对路径(openresty根目录)
 webtelnet.connect()
 while true do
-    local auto_out = webtelnet.input()
+    local auto_out = webtelnet.input() --NOTE:就算不需要自动登录，这一行也不能注释掉。
     if auto_out ~= "" then
         if string.find(auto_out, "ogin:") then
             auto_out = webtelnet.input(username)
@@ -66,7 +66,7 @@ while true do
         end
 
         local ascii = ascii_str(tostring(res))
-        etype, bytes, err = "text", wsocket:send_text("from nginx:" ..  tostring(ascii) .. "\n")
+        etype, bytes, err = "text", wsocket:send_text("from nginx:" ..  tostring(ascii) .. "\n") --NOTE:如果是纯转发，那么不需要这个\n。（这里好像也不需要？）
     end
 
     if not bytes then
