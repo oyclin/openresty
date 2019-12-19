@@ -34,7 +34,7 @@ local co = coroutine.create(function()
         end
 
         if input then
-            sock:send(input .. "\r\n")
+            sock:send(input .. "\r\n") --NOTE:如果是纯转发，则不需要添加这个"\r\n"
         end
 
         if input == "exit" then
